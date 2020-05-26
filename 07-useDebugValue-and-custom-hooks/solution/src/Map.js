@@ -1,12 +1,13 @@
 import React from "react";
-import somethingMap from "./useMap";
+import useMap from "./useMap";
 
 function Map(props) {
-  const mapRef = somethingMap();
+  const [value, setValue] = React.useState(true);
+  const mapRef = useMap();
 
   return (
     <>
-      {props.something ? (
+      {value ? (
         <div
           ref={mapRef}
           style={{ width: 600, height: 400, backgroundColor: "#ddd" }}
@@ -17,6 +18,13 @@ function Map(props) {
           style={{ width: 400, height: 200, backgroundColor: "#ddd" }}
         />
       )}
+      <button
+        onClick={() => {
+          setValue((currentValue) => !currentValue);
+        }}
+      >
+        toggle
+      </button>
     </>
   );
 }
